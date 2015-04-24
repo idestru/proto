@@ -1,0 +1,1 @@
+This is a web site scaffolding taking advantage of robust preprocessors.
