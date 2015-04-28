@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-html(lang="en")
-head
-	meta(charset="UTF-8")
-	title Sample Page
-	link(rel="stylesheet", href="css/main.css")
-body
-	.container
-		h1 Hi, I'm a sample page
-		p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		p Cumque, adipisci animi quia a, perspiciatis voluptates nesciunt.
-		p Rem doloremque quidem aliquam dignissimos accusantium repellendus voluptate!
-		p Optio accusamus nobis aut iusto soluta, unde rem!
-		p Exercitationem doloribus magni sit harum amet beatae repudiandae!
-	script(src="js/all.js")
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Sample Page
+		link(rel="stylesheet", href="css/main.css")
+		<!-- Handle fonts -->
+		link(rel="stylesheet", href="css/fonts.css")
+		link(rel="stylesheet", href="libs/bootstrap/dist/css/bootstrap.css")
+		link(rel="stylesheet", href="libs/animate.css/animate.min.css")
+	body
+		<!-- Here we go! -->
+
+		<!--[if lte IE 9]>
+		script(src="libs/html5shiv/dist/html5shiv.min.js")
+		script(src="libs/respond/dest/respond.min.js")
+		<![endif]-->
+		script(src="libs/jquery/dist/jquery.min.js")
+		script(src="libs/parallax/deploy/parallax.min.js")
+		script(src="libs/scrollspy/scrollspy.min.js")
+		script(src="libs/magnific-popup/dist/jquery.magnific-popup.min.js")
+		script(src="libs/mixitup/build/jquery.mixitup.min.js")
 	
