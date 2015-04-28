@@ -1,0 +1,24 @@
+{
+  "name": "proto",
+  "version": "0.0.1",
+  "authors": [
+    "Idestru <idestru@yandex.ru>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "animate.css": "~3.2.6",
+    "jquery": "~2.1.3",
+    "html5shiv": "~3.7.2",
+    "respond": "~1.4.2",
+    "parallax": "~2.1.3",
+    "waypoints": "~3.1.1"
+  }
+}
