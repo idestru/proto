@@ -26,7 +26,8 @@ gulp.task 'stylus', ->
 
 gulp.task 'jade', ->
 	gulp.src 'jade/*.jade'
-		.pipe do jade
+		.pipe jade
+			pretty: yes
 		.pipe gulp.dest 'dist'
 		.pipe do connect.reload
 
