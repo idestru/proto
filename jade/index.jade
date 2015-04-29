@@ -1,3 +1,8 @@
+mixin ie(condition)
+	| <!--[!{condition}]>
+	block
+	| <![endif]-->
+
 <!DOCTYPE html>
 html(lang="ru")
 	head
@@ -6,20 +11,12 @@ html(lang="ru")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		title Sample Page
 		link(rel="stylesheet", href="css/main.css")
-		<!-- Handle fonts -->
-		link(rel="stylesheet", href="css/fonts.css")
-		link(rel="stylesheet", href="libs/bootstrap/dist/css/bootstrap.css")
-		link(rel="stylesheet", href="libs/animate.css/animate.min.css")
+		//- Place favicon.ico and apple-touch-icon.png in the root directory
+		//- bower:css
+		//- endbower
 	body
-		<!-- Here we go! -->
-
-		<!--[if lte IE 9]>
-		script(src="libs/html5shiv/dist/html5shiv.min.js")
-		script(src="libs/respond/dest/respond.min.js")
-		<![endif]-->
-		script(src="libs/jquery/dist/jquery.min.js")
-		script(src="libs/parallax/deploy/parallax.min.js")
-		script(src="libs/scrollspy/scrollspy.min.js")
-		script(src="libs/magnific-popup/dist/jquery.magnific-popup.min.js")
-		script(src="libs/mixitup/build/jquery.mixitup.min.js")
-	
+		//- Here we go!
+		+ie('if lte IE 9')
+			//- respond+shiv
+		//- bower:js
+		//- endbower

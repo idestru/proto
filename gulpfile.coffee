@@ -6,6 +6,7 @@ connect = require 'gulp-connect'
 uglify = require 'gulp-uglify'
 jade = require 'gulp-jade'
 coffee = require 'gulp-coffee'
+wiredep = require('wiredep').stream
 
 gulp.task 'default', ['stylus', 'jade', 'coffee', 'connect', 'watch']
 
@@ -18,7 +19,7 @@ gulp.task 'connect', ->
 gulp.task 'stylus', ->
 	gulp.src 'stylus/*.styl'
 	.pipe stylus
-		compress: on
+		# compress: on
 		use: nib()
 	.pipe gulp.dest 'dist/css'
 	.pipe do connect.reload
@@ -39,7 +40,15 @@ gulp.task 'coffee', ->
 	.pipe gulp.dest 'dist/js'
 	.pipe do connect.reload
 
+gulp.task 'bower', ->
+	gulp.src 'jade/index.jade'
+	.pipe do wiredep
+		# set in .bowwerrc
+		# directory: 'dist/libs'
+	.pipe gulp.dest 'jade'
+
 gulp.task 'watch', ->
 	gulp.watch 'stylus/*.styl', ['stylus']
 	gulp.watch 'jade/*.jade', ['jade']
 	gulp.watch 'coffee/*.coffee', ['coffee']
+	gulp.watch 'bower.json', ['bower']
