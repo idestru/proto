@@ -7,8 +7,9 @@ uglify = require 'gulp-uglify'
 jade = require 'gulp-jade'
 coffee = require 'gulp-coffee'
 wiredep = require('wiredep').stream
+# useref = require 'gulp-useref'
 
-gulp.task 'default', ['stylus', 'jade', 'coffee', 'connect', 'watch']
+gulp.task 'default', ['stylus', 'bower', 'jade', 'coffee', 'connect', 'watch']
 
 gulp.task 'connect', ->
 	connect.server
@@ -17,7 +18,7 @@ gulp.task 'connect', ->
 		root: 'dist'
 
 gulp.task 'stylus', ->
-	gulp.src 'stylus/*.styl'
+	gulp.src 'src/stylus/*.styl'
 	.pipe stylus
 		# compress: on
 		use: nib()
@@ -26,14 +27,14 @@ gulp.task 'stylus', ->
 
 
 gulp.task 'jade', ->
-	gulp.src 'jade/*.jade'
+	gulp.src 'src/jade/*.jade'
 		.pipe jade
 			pretty: yes
 		.pipe gulp.dest 'dist'
 		.pipe do connect.reload
 
 gulp.task 'coffee', ->
-	gulp.src 'coffee/*.coffee'
+	gulp.src 'src/coffee/*.coffee'
 	.pipe do coffee
 	.pipe concat 'all.js'
 	.pipe do uglify
@@ -41,14 +42,23 @@ gulp.task 'coffee', ->
 	.pipe do connect.reload
 
 gulp.task 'bower', ->
-	gulp.src 'jade/index.jade'
-	.pipe do wiredep
+	gulp.src 'src/jade/*.jade'
+	.pipe wiredep
+		exclude: [ /html5shiv/, '/respond/' ],
 		# set in .bowwerrc
 		# directory: 'dist/libs'
-	.pipe gulp.dest 'jade'
+	.pipe gulp.dest 'src/jade'
+
+# gulp.task 'build', ->
+# 	assets = useref.assets()
+# 	gulp.src 'src/jade/*.jade'
+# 		.pipe(assets)
+# 		.pipe(assets.restore())
+# 		.pipe(useref())
+# 		.pipe(gulp.dest('dist'))
 
 gulp.task 'watch', ->
-	gulp.watch 'stylus/*.styl', ['stylus']
-	gulp.watch 'jade/*.jade', ['jade']
-	gulp.watch 'coffee/*.coffee', ['coffee']
-	gulp.watch 'bower.json', ['bower']
+	gulp.watch 'src/stylus/*.styl', ['stylus']
+	gulp.watch 'src/jade/*.jade', ['jade']
+	gulp.watch 'src/coffee/*.coffee', ['coffee']
+	gulp.watch 'bower.json', ['bower', 'jade']
