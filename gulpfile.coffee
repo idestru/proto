@@ -45,6 +45,7 @@ gulp.task 'bower', ->
 	gulp.src 'src/jade/*.jade'
 	.pipe wiredep
 		exclude: [ /html5shiv/, '/respond/' ],
+		ignorePath: '../../dist/'
 		# set in .bowwerrc
 		# directory: 'dist/libs'
 	.pipe gulp.dest 'src/jade'

@@ -14,18 +14,18 @@ html(lang="ru")
 		//- Place favicon.ico and apple-touch-icon.png in the root directory
 		//- build:css css/vendor.css
 		//- bower:css
-		link(rel='stylesheet', href='../../bower_components/bootstrap/dist/css/bootstrap.css')
-		link(rel='stylesheet', href='../../bower_components/animate.css/animate.css')
+		link(rel='stylesheet', href='libs/bootstrap/dist/css/bootstrap.css')
+		link(rel='stylesheet', href='libs/animate.css/animate.css')
 		//- endbower
 		//- endbuild
 	body
 		//- Here we go!
 		+ie('if lte IE 9')
-			script(src='../../bower_components/html5shiv/dist/html5shiv.js')
-			script(src='../../bower_components/respond/dest/respond.src.js')
+			script(src='libs/html5shiv/dist/html5shiv.js')
+			script(src='libs/respond/dest/respond.src.js')
 		//- bower:js
-		script(src='../../bower_components/jquery/dist/jquery.js')
-		script(src='../../bower_components/bootstrap/dist/js/bootstrap.js')
-		script(src='../../bower_components/waypoints/lib/noframework.waypoints.min.js')
+		script(src='libs/jquery/dist/jquery.js')
+		script(src='libs/bootstrap/dist/js/bootstrap.js')
+		script(src='libs/waypoints/lib/noframework.waypoints.min.js')
 		//- endbower
 		script(src="js/all.js")
