@@ -7,6 +7,7 @@ uglify = require 'gulp-uglify'
 jade = require 'gulp-jade'
 coffee = require 'gulp-coffee'
 wiredep = require('wiredep').stream
+plumber = require 'gulp-plumber'
 # useref = require 'gulp-useref'
 
 gulp.task 'default', ['stylus', 'bower', 'jade', 'coffee', 'connect', 'watch']
@@ -19,6 +20,7 @@ gulp.task 'connect', ->
 
 gulp.task 'stylus', ->
 	gulp.src 'src/stylus/*.styl'
+	.pipe do plumber
 	.pipe stylus
 		# compress: on
 		use: nib()
@@ -28,13 +30,15 @@ gulp.task 'stylus', ->
 
 gulp.task 'jade', ->
 	gulp.src 'src/jade/*.jade'
-		.pipe jade
-			pretty: yes
-		.pipe gulp.dest 'dist'
-		.pipe do connect.reload
+	.pipe do plumber
+	.pipe jade
+		pretty: yes
+	.pipe gulp.dest 'dist'
+	.pipe do connect.reload
 
 gulp.task 'coffee', ->
 	gulp.src 'src/coffee/*.coffee'
+	.pipe do plumber
 	.pipe do coffee
 	.pipe concat 'all.js'
 	.pipe do uglify
@@ -43,6 +47,7 @@ gulp.task 'coffee', ->
 
 gulp.task 'bower', ->
 	gulp.src 'src/jade/*.jade'
+	.pipe do plumber
 	.pipe wiredep
 		exclude: [ /html5shiv/, '/respond/' ],
 		ignorePath: '../../dist/'
